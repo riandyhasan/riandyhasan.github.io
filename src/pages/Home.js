@@ -6,7 +6,7 @@ import { ReactComponent as Instagram } from "../assets/svg/Instagram.svg";
 import { ReactComponent as Medium } from "../assets/svg/Medium.svg";
 import { ReactComponent as Linkedin } from "../assets/svg/Linkedin.svg";
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((theme) => {
   return {
     root: {
       display: "flex",
@@ -61,6 +61,8 @@ export default function Home() {
 
   const history = useHistory();
 
+  {
+    /*
   const homeTitle = [
     {
       text: "Hello,",
@@ -78,6 +80,9 @@ export default function Home() {
       path: "/contact",
     },
   ];
+*/
+  }
+
   const classes = useStyles();
 
   return (
