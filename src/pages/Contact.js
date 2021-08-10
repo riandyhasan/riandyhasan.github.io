@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { makeStyles, Link, FormControl, FormLabel, TextField, Container, Button, Typography, Drawer } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import emailjs from "emailjs-com";
+import Alert from "../components/Alert";
 import { ReactComponent as Strip } from "../assets/svg/Strip.svg";
 import { ReactComponent as Email } from "../assets/svg/EmailRound.svg";
 import { ReactComponent as Instagram } from "../assets/svg/InstagramRound.svg";
@@ -63,12 +65,37 @@ const useStyles = makeStyles(() => {
   };
 });
 
-export default function Create() {
+export default function Contact() {
+  function sendEmail(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_lebel5x", "template_kpl4trf", e.target, "user_hoFpG3XhPIIfpZRHHO38o").then(
+      (result) => {
+        console.log(result.text);
+        setAlertUpload(true);
+        setAlertStatus("success");
+        setAlertDesc("Succes! Your message has been send");
+      },
+      (error) => {
+        console.log(error.text);
+        setAlertUpload(true);
+        setAlertStatus("error");
+        setAlertDesc("Error! Please send another message");
+      }
+    );
+  }
+
+  const [alertUpload, setAlertUpload] = useState(false);
+  const [alertDesc, setAlertDesc] = useState("");
+  const [alertStatus, setAlertStatus] = useState("");
+
   const classes = useStyles();
   const history = useHistory();
 
   return (
     <Container size="sm">
+      <Alert show={alertUpload} setShow={setAlertUpload} status={alertStatus} desc={alertDesc} />
+
       <div className={classes.title}>
         <Strip />
         <Typography variant="h1" align="center">
@@ -77,18 +104,18 @@ export default function Create() {
       </div>
 
       {/* Contact Form */}
-      <form noValidate autoComplete="off" className={classes.form}>
+      <form noValidate autoComplete="off" className={classes.form} onSubmit={sendEmail}>
         <FormControl className={classes.formControl}>
           <FormLabel className={classes.formTitle}>Name</FormLabel>
-          <TextField className={classes.field} label="Name" variant="outlined" color="secondary" fullWidth />
+          <TextField className={classes.field} label="Name" variant="outlined" color="secondary" name="name" fullWidth />
         </FormControl>
         <FormControl className={classes.formControl}>
           <FormLabel className={classes.formTitle}>Subject</FormLabel>
-          <TextField className={classes.field} label="Subject" variant="outlined" color="secondary" fullWidth required />
+          <TextField className={classes.field} label="Subject" variant="outlined" color="secondary" name="subject" fullWidth required />
         </FormControl>
         <FormControl className={classes.formControl}>
           <FormLabel className={classes.formTitle}>Message</FormLabel>
-          <TextField className={classes.field} label="Message" variant="outlined" color="secondary" multiline rows={4} fullWidth required />
+          <TextField className={classes.field} label="Message" variant="outlined" color="secondary" name="message" multiline rows={4} fullWidth required />
         </FormControl>
         <Button type="submit" color="primary" variant="contained" endIcon={<KeyboardArrowRightIcon />}>
           Submit
