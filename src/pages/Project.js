@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, Typography, Container, Grid, Link } from "@material-ui/core";
 import { ReactComponent as Strip } from "../assets/svg/Strip.svg";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ProjectCard from "../components/ProjectCard";
 import ArticleCard from "../components/ArticleCard";
-import Axios from "axios";
 import image1 from "../assets/image/projects/1.png";
 import image2 from "../assets/image/projects/2.png";
 import image3 from "../assets/image/projects/3.png";
@@ -27,15 +28,11 @@ const useStyles = makeStyles(() => {
 });
 
 export default function Project() {
+  const theme = useTheme();
+  const isResp = useMediaQuery(theme.breakpoints.down('md'));
   const [mediumData, setMediumData] = useState("");
-
-  useEffect(() => {
-    Axios.get("https://v1.nocodeapi.com/riandyhasan/medium/hSmyRgblqyHkFgke").then((response) => {
-      setMediumData(response.data);
-    });
-  });
-
   const [isProject, setIsProject] = useState(true);
+  const matches = useMediaQuery('(max-width:473px)');
 
   const classes = useStyles();
   const projectCard = [
@@ -99,9 +96,15 @@ export default function Project() {
               </Typography>
               <Strip style={{ cursor: "pointer" }} />
             </div>
-            <Grid container spacing={10}>
+            <Grid 
+            container 
+            spacing={10}
+            direction={isResp?"column":"row"}
+            justifyContent="center"
+            alignItems="center"
+            >
               {projectCard.map((item) => (
-                <Grid item xs={6}>
+                <Grid item xs={matches? 18 : 6}>
                   <Link href={item.url} target="_blank">
                     <ProjectCard name={item.name} imageUrl={item.imageUrl} />
                   </Link>
@@ -117,9 +120,15 @@ export default function Project() {
               </Typography>
               <Strip style={{ cursor: "pointer" }} />
             </div>
-            <Grid container spacing={10}>
+            <Grid
+            container 
+            spacing={10}
+            direction={isResp?"column":"row"}
+            justifyContent="center"
+            alignItems="center"
+            >
               {tempData.map((item) => (
-                <Grid item xs={6}>
+                <Grid item xs={matches? 18 : 6}>
                   <Link href={item.link} target="_blank">
                     <ArticleCard title={item.title} content={item.content} />
                   </Link>

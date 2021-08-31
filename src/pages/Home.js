@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles, Drawer, Typography, Box, Link } from "@material-ui/core";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useHistory } from "react-router-dom";
 import ProfilePicture from "../assets/image/fotoyandy.png";
 import { ReactComponent as Instagram } from "../assets/svg/Instagram.svg";
@@ -12,27 +14,53 @@ const useStyles = makeStyles((theme) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-around",
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: "column"
+      },
     },
     title: {
-      marginTop: "5rem",
-      marginRight: "12rem",
+      [theme.breakpoints.down('md')]: {
+        marginTop:"5rem",
+        height:"100vh",
+      },
     },
     text: {
       cursor: "pointer",
     },
+    aboutme:{
+      maxW:"100vw",
+      [theme.breakpoints.down('sm')]: {
+        marginRight:"4rem",
+        marginLeft:"2rem"
+      },
+    },
     sideDesc: {
       width: "25.5rem",
+      height:"90vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       background: "#ffffff",
+      marginBottom:"-5.5rem",
+      marginTop:"-5.7rem",
+      marginRight:"-10.8rem",
       gap: "1rem",
       padding: "2rem",
+      [theme.breakpoints.down('sm')]: {
+        width: "100vw",
+        marginLeft:"-9.5rem",
+      },
     },
     exp: {
       display: "flex",
       justifyContent: "center",
       gap: "0.5rem",
+      maxW:"100vw",
+      [theme.breakpoints.down('sm')]: {
+        flexDirection:"column",
+        alignItems:"center",
+        marginRight:"3rem",
+      },
     },
     expList: {
       fontSize: "0.5rem",
@@ -46,10 +74,13 @@ const useStyles = makeStyles((theme) => {
     },
     medsos: {
       display: "flex",
-      marginTop: "5rem",
+      marginTop: "auto",
       marginLeft: "auto",
       alignItems: "center",
       gap: "1rem",
+      [theme.breakpoints.down('sm')]: {
+        marginRight:"3rem",
+      },
     },
   };
 });
@@ -60,6 +91,9 @@ export default function Home() {
   const [isHoverContent3, setIsHoverContent3] = useState(false);
 
   const history = useHistory();
+
+  const theme = useTheme();
+  const isBot = useMediaQuery(theme.breakpoints.down('sm'));
 
   {
     /*
@@ -89,6 +123,7 @@ export default function Home() {
     <div className={classes.root}>
       {/* main title */}
       <Box className={classes.title}>
+
         <Typography
           className={classes.text}
           variant="h1"
@@ -122,9 +157,9 @@ export default function Home() {
       </Box>
 
       {/* side description */}
-      <Drawer variant="permanent" classes={{ paper: classes.sideDesc }} anchor="right">
+      <Box className={classes.sideDesc } >
         <img src={ProfilePicture} className={classes.image} />
-        <Box>
+        <Box className={classes.aboutme}>
           <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
             About Me
           </Typography>
@@ -160,7 +195,7 @@ export default function Home() {
             <Linkedin style={{ cursor: "pointer", width: "1.5rem" }} />
           </Link>
         </div>
-      </Drawer>
+      </Box>
     </div>
   );
 }

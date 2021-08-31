@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { makeStyles, Link, FormControl, FormLabel, TextField, Container, Button, Typography, Drawer } from "@material-ui/core";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useHistory } from "react-router-dom";
 import emailjs from "emailjs-com";
 import Alert from "../components/Alert";
@@ -11,7 +13,7 @@ import { ReactComponent as Medium } from "../assets/svg/MediumRound.svg";
 import { ReactComponent as Linkedin } from "../assets/svg/LinkedinRound.svg";
 import { ReactComponent as Github } from "../assets/svg/GithubRound.svg";
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((theme) => {
   return {
     field: {
       marginTop: 20,
@@ -21,6 +23,10 @@ const useStyles = makeStyles(() => {
     },
     form: {
       marginRight: "30.5rem",
+      [theme.breakpoints.down('md')]: {
+        maxW:"100vw",
+        marginRight: "5rem"
+      },
     },
     formControl: {
       display: "flex",
@@ -37,6 +43,12 @@ const useStyles = makeStyles(() => {
       justifyContent: "flex-end",
       color: "white",
       marginRight: "30.5rem",
+      [theme.breakpoints.down('md')]: {
+        marginRight: "5rem"
+      },
+      [theme.breakpoints.down('xs')]: {
+        marginRight: "3rem"
+      },
     },
     sideDesc: {
       width: "25.5rem",
@@ -91,6 +103,8 @@ export default function Contact() {
 
   const classes = useStyles();
   const history = useHistory();
+  const theme = useTheme();
+  const isIlang = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Container size="sm">
@@ -121,6 +135,8 @@ export default function Contact() {
           Submit
         </Button>
       </form>
+    {isIlang?
+    null:
 
       <Drawer variant="permanent" classes={{ paper: classes.sideDesc }} anchor="right">
         <Link href="mailto:riandyhsn@gmail.com">
@@ -151,6 +167,7 @@ export default function Contact() {
           </div>
         </div>
       </Drawer>
+}
     </Container>
   );
 }
