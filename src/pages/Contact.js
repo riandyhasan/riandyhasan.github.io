@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import { makeStyles, Link, FormControl, FormLabel, TextField, Container, Button, Typography, Drawer } from "@material-ui/core";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles, Link, FormControl, FormLabel, TextField, Container, Button, Typography, Drawer, Box } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useHistory } from "react-router-dom";
 import emailjs from "emailjs-com";
 import Alert from "../components/Alert";
@@ -23,9 +23,10 @@ const useStyles = makeStyles((theme) => {
     },
     form: {
       marginRight: "30.5rem",
-      [theme.breakpoints.down('md')]: {
-        maxW:"100vw",
-        marginRight: "5rem"
+      [theme.breakpoints.down("md")]: {
+        maxW: "100vw",
+        marginRight: "5rem",
+        marginLeft: "3rem",
       },
     },
     formControl: {
@@ -43,11 +44,11 @@ const useStyles = makeStyles((theme) => {
       justifyContent: "flex-end",
       color: "white",
       marginRight: "30.5rem",
-      [theme.breakpoints.down('md')]: {
-        marginRight: "5rem"
+      [theme.breakpoints.down("md")]: {
+        marginRight: "5rem",
       },
-      [theme.breakpoints.down('xs')]: {
-        marginRight: "3rem"
+      [theme.breakpoints.down("xs")]: {
+        marginRight: "3rem",
       },
     },
     sideDesc: {
@@ -58,6 +59,14 @@ const useStyles = makeStyles((theme) => {
       justifyContent: "center",
       background: "#ffffff",
       padding: "2rem",
+      [theme.breakpoints.down("md")]: {
+        width: "100vw",
+        marginBottom: "-2rem",
+        marginTop: "4rem",
+      },
+      [theme.breakpoints.down("sm")]: {
+        marginLeft: "-6rem",
+      },
     },
     medsos: {
       display: "flex",
@@ -104,7 +113,7 @@ export default function Contact() {
   const classes = useStyles();
   const history = useHistory();
   const theme = useTheme();
-  const isIlang = useMediaQuery(theme.breakpoints.down('md'));
+  const isIlang = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Container size="sm">
@@ -135,39 +144,67 @@ export default function Contact() {
           Submit
         </Button>
       </form>
-    {isIlang?
-    null:
-
-      <Drawer variant="permanent" classes={{ paper: classes.sideDesc }} anchor="right">
-        <Link href="mailto:riandyhsn@gmail.com">
-          <div className={classes.email}>
-            <Email style={{ cursor: "pointer", width: "3.5rem" }} />
-            <Typography variant="body1" style={{ fontSize: "1.7rem", fontWeight: "normal", cursor: "pointer", color: "black" }}>
-              riandyhsn@gmail.com
+      {isIlang ? (
+        <Box className={classes.sideDesc}>
+          <Link href="mailto:riandyhsn@gmail.com">
+            <div className={classes.email}>
+              <Email style={{ cursor: "pointer", width: "3.5rem" }} />
+              <Typography variant="body1" style={{ fontSize: "1.7rem", fontWeight: "normal", cursor: "pointer", color: "black" }}>
+                riandyhsn@gmail.com
+              </Typography>
+            </div>
+          </Link>
+          <div className={classes.medsosList}>
+            <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
+              Follow Me
             </Typography>
+            <div className={classes.medsos}>
+              <Link href="https://www.instagram.com/riandyhasan/" target="_blank">
+                <Instagram style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+              <Link href="https://tenggelamdalamkata.medium.com/" target="_blank">
+                <Medium style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+              <Link href="https://www.linkedin.com/in/riandy-hasan-3836791b5/" target="_blank">
+                <Linkedin style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+              <Link href="https://github.com/riandyhasan" target="_blank">
+                <Github style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+            </div>
           </div>
-        </Link>
-        <div className={classes.medsosList}>
-          <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
-            Follow Me
-          </Typography>
-          <div className={classes.medsos}>
-            <Link href="https://www.instagram.com/riandyhasan/" target="_blank">
-              <Instagram style={{ cursor: "pointer", width: "3.5rem" }} />
-            </Link>
-            <Link href="https://tenggelamdalamkata.medium.com/" target="_blank">
-              <Medium style={{ cursor: "pointer", width: "3.5rem" }} />
-            </Link>
-            <Link href="https://www.linkedin.com/in/riandy-hasan-3836791b5/" target="_blank">
-              <Linkedin style={{ cursor: "pointer", width: "3.5rem" }} />
-            </Link>
-            <Link href="https://github.com/riandyhasan" target="_blank">
-              <Github style={{ cursor: "pointer", width: "3.5rem" }} />
-            </Link>
+        </Box>
+      ) : (
+        <Drawer variant="permanent" classes={{ paper: classes.sideDesc }} anchor="right">
+          <Link href="mailto:riandyhsn@gmail.com">
+            <div className={classes.email}>
+              <Email style={{ cursor: "pointer", width: "3.5rem" }} />
+              <Typography variant="body1" style={{ fontSize: "1.7rem", fontWeight: "normal", cursor: "pointer", color: "black" }}>
+                riandyhsn@gmail.com
+              </Typography>
+            </div>
+          </Link>
+          <div className={classes.medsosList}>
+            <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
+              Follow Me
+            </Typography>
+            <div className={classes.medsos}>
+              <Link href="https://www.instagram.com/riandyhasan/" target="_blank">
+                <Instagram style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+              <Link href="https://tenggelamdalamkata.medium.com/" target="_blank">
+                <Medium style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+              <Link href="https://www.linkedin.com/in/riandy-hasan-3836791b5/" target="_blank">
+                <Linkedin style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+              <Link href="https://github.com/riandyhasan" target="_blank">
+                <Github style={{ cursor: "pointer", width: "3.5rem" }} />
+              </Link>
+            </div>
           </div>
-        </div>
-      </Drawer>
-}
+        </Drawer>
+      )}
     </Container>
   );
 }

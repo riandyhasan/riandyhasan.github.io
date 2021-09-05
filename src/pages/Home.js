@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles, Drawer, Typography, Box, Link } from "@material-ui/core";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useHistory } from "react-router-dom";
 import ProfilePicture from "../assets/image/fotoyandy.png";
 import { ReactComponent as Instagram } from "../assets/svg/Instagram.svg";
@@ -14,52 +14,49 @@ const useStyles = makeStyles((theme) => {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-around",
-      [theme.breakpoints.down('sm')]: {
-        flexDirection: "column"
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
       },
     },
     title: {
-      [theme.breakpoints.down('md')]: {
-        marginTop:"5rem",
-        height:"100vh",
+      [theme.breakpoints.down("md")]: {
+        marginTop: "5rem",
+        height: "100vh",
       },
     },
     text: {
       cursor: "pointer",
     },
-    aboutme:{
-      maxW:"100vw",
-      [theme.breakpoints.down('sm')]: {
-        marginRight:"4rem",
-        marginLeft:"2rem"
+    aboutme: {
+      maxW: "100vw",
+      [theme.breakpoints.down("sm")]: {
+        marginRight: "4rem",
+        marginLeft: "2rem",
       },
     },
     sideDesc: {
       width: "25.5rem",
-      height:"90vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       background: "#ffffff",
-      marginBottom:"-5.5rem",
-      marginTop:"-5.7rem",
-      marginRight:"-10.8rem",
       gap: "1rem",
       padding: "2rem",
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down("sm")]: {
         width: "100vw",
-        marginLeft:"-9.5rem",
+        marginBottom: "-2rem",
       },
     },
     exp: {
       display: "flex",
       justifyContent: "center",
       gap: "0.5rem",
-      maxW:"100vw",
-      [theme.breakpoints.down('sm')]: {
-        flexDirection:"column",
-        alignItems:"center",
-        marginRight:"3rem",
+      maxW: "100vw",
+      [theme.breakpoints.down("xs")]: {
+        flexDirection: "column",
+        alignItems: "center",
+        marginRight: "3rem",
+        gap: "0.03rem",
       },
     },
     expList: {
@@ -78,8 +75,8 @@ const useStyles = makeStyles((theme) => {
       marginLeft: "auto",
       alignItems: "center",
       gap: "1rem",
-      [theme.breakpoints.down('sm')]: {
-        marginRight:"3rem",
+      [theme.breakpoints.down("sm")]: {
+        marginRight: "3rem",
       },
     },
   };
@@ -93,7 +90,7 @@ export default function Home() {
   const history = useHistory();
 
   const theme = useTheme();
-  const isBot = useMediaQuery(theme.breakpoints.down('sm'));
+  const isBot = useMediaQuery(theme.breakpoints.down("sm"));
 
   {
     /*
@@ -123,7 +120,6 @@ export default function Home() {
     <div className={classes.root}>
       {/* main title */}
       <Box className={classes.title}>
-
         <Typography
           className={classes.text}
           variant="h1"
@@ -156,46 +152,87 @@ export default function Home() {
         </Typography>
       </Box>
 
-      {/* side description */}
-      <Box className={classes.sideDesc } >
-        <img src={ProfilePicture} className={classes.image} />
-        <Box className={classes.aboutme}>
-          <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
-            About Me
-          </Typography>
-          <Typography variant="body1" style={{ textAlign: "justify" }}>
-            An undergraduate student that is interested in information technology and entrepreneurship. I have experience in UI/UX design and web frontend development. I love to collaborate with people to build something.
-          </Typography>
+      {isBot ? (
+        <Box className={classes.sideDesc}>
+          <img src={ProfilePicture} className={classes.image} />
+          <Box className={classes.aboutme}>
+            <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
+              About Me
+            </Typography>
+            <Typography variant="body1" style={{ textAlign: "justify" }}>
+              An undergraduate student that is interested in information technology and entrepreneurship. I have experience in UI/UX design and web frontend development. I love to collaborate with people to build something.
+            </Typography>
+          </Box>
+          <div className={classes.exp}>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold", cursor: "pointer" }}>
+              Organizational
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>
+              •
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold", cursor: "pointer" }}>
+              Web Dev
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>
+              •
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.25rem", fontWeight: "bold", cursor: "pointer" }}>
+              Voluntering
+            </Typography>
+          </div>
+          <div className={classes.medsos}>
+            <Link href="https://www.instagram.com/riandyhasan/" target="_blank">
+              <Instagram style={{ cursor: "pointer", width: "1.5rem" }} />
+            </Link>
+            <Link href="https://tenggelamdalamkata.medium.com/" target="_blank">
+              <Medium style={{ cursor: "pointer", width: "1.7rem" }} />
+            </Link>
+            <Link href="https://github.com/riandyhasan" target="_blank">
+              <Linkedin style={{ cursor: "pointer", width: "1.5rem" }} />
+            </Link>
+          </div>
         </Box>
-        <div className={classes.exp}>
-          <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold", cursor: "pointer" }}>
-            Organizational
-          </Typography>
-          <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>
-            •
-          </Typography>
-          <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold", cursor: "pointer" }}>
-            Web Dev
-          </Typography>
-          <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>
-            •
-          </Typography>
-          <Typography variant="h6" style={{ fontSize: "1.25rem", fontWeight: "bold", cursor: "pointer" }}>
-            Voluntering
-          </Typography>
-        </div>
-        <div className={classes.medsos}>
-          <Link href="https://www.instagram.com/riandyhasan/" target="_blank">
-            <Instagram style={{ cursor: "pointer", width: "1.5rem" }} />
-          </Link>
-          <Link href="https://tenggelamdalamkata.medium.com/" target="_blank">
-            <Medium style={{ cursor: "pointer", width: "1.7rem" }} />
-          </Link>
-          <Link href="https://github.com/riandyhasan" target="_blank">
-            <Linkedin style={{ cursor: "pointer", width: "1.5rem" }} />
-          </Link>
-        </div>
-      </Box>
+      ) : (
+        <Drawer variant="permanent" classes={{ paper: classes.sideDesc }} anchor="right">
+          <img src={ProfilePicture} className={classes.image} />
+          <Box className={classes.aboutme}>
+            <Typography variant="h4" style={{ fontSize: "1.7rem", fontWeight: "bold" }}>
+              About Me
+            </Typography>
+            <Typography variant="body1" style={{ textAlign: "justify" }}>
+              An undergraduate student that is interested in information technology and entrepreneurship. I have experience in UI/UX design and web frontend development. I love to collaborate with people to build something.
+            </Typography>
+          </Box>
+          <div className={classes.exp}>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold", cursor: "pointer" }}>
+              Organizational
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>
+              •
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold", cursor: "pointer" }}>
+              Web Dev
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.15rem", fontWeight: "bold" }}>
+              •
+            </Typography>
+            <Typography variant="h6" style={{ fontSize: "1.25rem", fontWeight: "bold", cursor: "pointer" }}>
+              Voluntering
+            </Typography>
+          </div>
+          <div className={classes.medsos}>
+            <Link href="https://www.instagram.com/riandyhasan/" target="_blank">
+              <Instagram style={{ cursor: "pointer", width: "1.5rem" }} />
+            </Link>
+            <Link href="https://tenggelamdalamkata.medium.com/" target="_blank">
+              <Medium style={{ cursor: "pointer", width: "1.7rem" }} />
+            </Link>
+            <Link href="https://github.com/riandyhasan" target="_blank">
+              <Linkedin style={{ cursor: "pointer", width: "1.5rem" }} />
+            </Link>
+          </div>
+        </Drawer>
+      )}
     </div>
   );
 }
