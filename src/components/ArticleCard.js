@@ -1,39 +1,21 @@
 import React from "react";
-import { makeStyles, Card, CardActionArea, CardContent, CardMedia, Typography } from "@material-ui/core";
+import { makeStyles, Card, CardActionArea, CardContent, Typography,Box } from "@material-ui/core";
+import { ReactComponent as StripHitam } from "../assets/svg/StripHitam.svg";
+import { ReactComponent as Medium } from "../assets/svg/Medium.svg";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
 const useStyles = makeStyles((theme) => {
   return {
   root: {
-    width: "26.7rem",
-    height: "16.5rem",
     padding: "2rem",
     filter: "drop-shadow(-11px 6px 13px rgba(255, 255, 255, 0.25))",
-    [theme.breakpoints.down('sm')]: {
-      width: "18.7rem",
-      height:"13.5rem",
-      padding: "0.5rem",
-    },
     [theme.breakpoints.down('xs')]: {
-      width: "12.7rem",
-      height:"12.5rem",
+      width:"15rem",
       padding: "0.3rem",
     },
-    
   },
-  media: {
-    width:"24.4rem",
-    height: "11.5rem",
-    [theme.breakpoints.down('sm')]: {
-      width: "16.4rem",
-      height:"8rem"
-    },
-    [theme.breakpoints.down('xs')]: {
-      width: "10.4rem",
-      height:"6rem",
-      padding: "0.5rem",
-    },
+  content: {
+    display: "flex",
   },
   card: {
     display: "flex",
@@ -44,7 +26,7 @@ const useStyles = makeStyles((theme) => {
 };
 });
 
-export default function ProjectCard({ imageUrl, name }) {
+export default function ProjectCard({ content, title }) {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery('(max-width:353px)');
@@ -52,10 +34,16 @@ export default function ProjectCard({ imageUrl, name }) {
   return (
     <Card className={classes.root}>
       <CardActionArea className={classes.card}>
+        <Typography style={{ fontWeight: "bold", fontSize: "1.5rem" }}>{title}</Typography>
+        <StripHitam style={{ width: "90%" }} />
         <CardContent>
-          <img className={classes.media} src={imageUrl} />
+          <Box>
+          <Typography noWrap style={{ overflow: "hidden", textOverflow: "ellipsis", width: "25rem" }}>
+            {content}
+          </Typography>
+          </Box>
         </CardContent>
-        <Typography style={{ fontWeight: "bold", fontSize: "1.5rem" }}>{name}</Typography>
+        <Medium style={{ width: "2em", marginLeft: "auto" }} />
       </CardActionArea>
     </Card>
   );
