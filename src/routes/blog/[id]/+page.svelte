@@ -3,6 +3,7 @@
 	import { ArrowLeft } from 'lucide-svelte';
 	import { marked } from 'marked';
 	import { page } from '$app/stores';
+	import { trackClick } from '$lib/analytics';
 
 	let { data }: { data: PageData } = $props();
 
@@ -65,6 +66,7 @@
 		<a
 			href="/blog"
 			class="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8"
+			onclick={() => trackClick('back_link', { from: 'blog_post', post_id: data.post.id })}
 		>
 			<ArrowLeft class="mr-2 h-4 w-4" />
 			Back to Blog

@@ -4,12 +4,21 @@
 	import Button from '$lib/components/ui/button.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
 	import { page } from '$app/stores';
+	import { trackClick, trackDownload, trackOutboundLink } from '$lib/analytics';
 
 	let { data }: { data: PageData } = $props();
 
 	const siteUrl = 'https://riandyhasan.me';
 	const canonicalUrl = $derived(`${siteUrl}${$page.url.pathname}`);
 	const ogImage = $derived(data.profile?.photo || `${siteUrl}/myself.jpg`);
+
+	function handleOutboundLinkClick(e: MouseEvent) {
+		const target = e.target as HTMLElement;
+		const link = target.closest('a[data-track-outbound]') as HTMLAnchorElement;
+		if (link) {
+			trackOutboundLink(link.href);
+		}
+	}
 
 	function linkify(text: string): string {
 		const urlPattern =
@@ -25,7 +34,7 @@
 				href = `https://${url}`;
 			}
 
-			return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${url}</a>`;
+			return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline" data-track-outbound="${href}">${url}</a>`;
 		});
 	}
 </script>
@@ -83,24 +92,41 @@
 				</div>
 
 				<div class="flex flex-wrap gap-3 justify-center">
-					<Button href="mailto:{data.profile.email}" variant="default">
-						<Mail class="mr-2 h-4 w-4" />
-						Email Me
-					</Button>
-					<Button
+					<a
+						href="mailto:{data.profile.email}"
+						onclick={() => trackClick('email_button', { location: 'about_page' })}
+					>
+						<Button variant="default">
+							<Mail class="mr-2 h-4 w-4" />
+							Email Me
+						</Button>
+					</a>
+					<a
 						href={data.profile.linkedin}
-						variant="outline"
 						target="_blank"
 						rel="noopener noreferrer"
+						onclick={() => trackOutboundLink(data.profile.linkedin)}
 					>
-						<Linkedin class="mr-2 h-4 w-4" />
-						LinkedIn
-					</Button>
-					{#if data.profile.resumeUrl}
-						<Button href={data.profile.resumeUrl} variant="outline" target="_blank">
-							<Download class="mr-2 h-4 w-4" />
-							Resume
+						<Button variant="outline">
+							<Linkedin class="mr-2 h-4 w-4" />
+							LinkedIn
 						</Button>
+					</a>
+					{#if data.profile.resumeUrl}
+						<a
+							href={data.profile.resumeUrl}
+							target="_blank"
+							onclick={() => {
+								const url = data.profile.resumeUrl || '';
+								const fileName = url.split('/').pop() || 'resume';
+								trackDownload(fileName, url.split('.').pop() || 'pdf');
+							}}
+						>
+							<Button variant="outline">
+								<Download class="mr-2 h-4 w-4" />
+								Resume
+							</Button>
+						</a>
 					{/if}
 				</div>
 			</div>
@@ -142,7 +168,11 @@
 										{/if}
 									</div>
 								</div>
-								<p class="text-muted-foreground leading-relaxed">
+								<p
+									class="text-muted-foreground leading-relaxed"
+									onclick={handleOutboundLinkClick}
+									role="presentation"
+								>
 									{@html linkify(job.description)}
 								</p>
 							</div>

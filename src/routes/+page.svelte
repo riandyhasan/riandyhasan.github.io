@@ -5,6 +5,7 @@
 	import Terminal from '$lib/components/terminal.svelte';
 	import Github from '$lib/components/icons/github.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
+	import { trackClick, trackOutboundLink } from '$lib/analytics';
 
 	let { data }: { data: PageData } = $props();
 
@@ -47,6 +48,7 @@
 							rel="noopener noreferrer"
 							class="text-muted-foreground hover:text-foreground transition-colors"
 							aria-label="GitHub"
+							onclick={() => trackOutboundLink('https://github.com/riandyhasan')}
 						>
 							<Github class="h-5 w-5" />
 						</a>
@@ -56,6 +58,8 @@
 							rel="noopener noreferrer"
 							class="text-muted-foreground hover:text-foreground transition-colors"
 							aria-label="LinkedIn"
+							onclick={() =>
+								trackOutboundLink('https://www.linkedin.com/in/riandy-hasan-3836791b5/')}
 						>
 							<Linkedin class="h-5 w-5" />
 						</a>
@@ -63,16 +67,29 @@
 							href="mailto:riandyhsn@gmail.com"
 							class="text-muted-foreground hover:text-foreground transition-colors"
 							aria-label="Email"
+							onclick={() => trackClick('email_link', { location: 'home_page' })}
 						>
 							<Mail class="h-5 w-5" />
 						</a>
 					</div>
 
 					<div class="flex flex-wrap gap-4">
-						<Button href="/projects" size="lg">
-							View Projects <ArrowRight class="ml-2 h-4 w-4" />
-						</Button>
-						<Button href="/contact" variant="outline" size="lg">Get in Touch</Button>
+						<a
+							href="/projects"
+							onclick={() =>
+								trackClick('cta_button', { button_name: 'View Projects', location: 'home_page' })}
+						>
+							<Button size="lg">
+								View Projects <ArrowRight class="ml-2 h-4 w-4" />
+							</Button>
+						</a>
+						<a
+							href="/contact"
+							onclick={() =>
+								trackClick('cta_button', { button_name: 'Get in Touch', location: 'home_page' })}
+						>
+							<Button variant="outline" size="lg">Get in Touch</Button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -89,6 +106,7 @@
 			<a
 				href="/projects"
 				class="text-sm font-medium hover:underline inline-flex items-center gap-1"
+				onclick={() => trackClick('view_all_link', { section: 'featured_work' })}
 			>
 				View All <ArrowRight class="h-4 w-4" />
 			</a>
@@ -99,6 +117,12 @@
 				<a
 					href="/projects/{project.id}"
 					class="group block p-6 rounded-lg border border-border hover:border-foreground transition-colors"
+					onclick={() =>
+						trackClick('project_card', {
+							project_id: project.id,
+							project_title: project.title,
+							location: 'home_featured'
+						})}
 				>
 					<div class="aspect-[4/3] overflow-hidden rounded-lg bg-muted mb-4">
 						<img
@@ -133,7 +157,11 @@
 	<section class="py-16 border-t border-border">
 		<div class="flex items-center justify-between mb-12">
 			<h2 class="text-3xl font-bold tracking-tight">Latest Writing</h2>
-			<a href="/blog" class="text-sm font-medium hover:underline inline-flex items-center gap-1">
+			<a
+				href="/blog"
+				class="text-sm font-medium hover:underline inline-flex items-center gap-1"
+				onclick={() => trackClick('view_all_link', { section: 'latest_writing' })}
+			>
 				View All <ArrowRight class="h-4 w-4" />
 			</a>
 		</div>
@@ -143,6 +171,12 @@
 				<a
 					href="/blog/{post.id}"
 					class="group block p-6 rounded-lg border border-border hover:border-foreground transition-colors"
+					onclick={() =>
+						trackClick('blog_card', {
+							post_id: post.id,
+							post_title: post.title,
+							location: 'home_latest'
+						})}
 				>
 					<div class="flex items-center gap-2 text-xs text-muted-foreground mb-3">
 						<span>{post.category}</span>

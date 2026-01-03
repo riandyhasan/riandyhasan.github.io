@@ -7,4 +7,3 @@ export async function load() {
 		error(404, 'Not found');
 	}
 }
-

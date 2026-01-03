@@ -10,13 +10,23 @@ A minimalist portfolio website showcasing projects, blog posts, and professional
 npm install
 ```
 
-2. Run the development server:
+2. Set up environment variables:
+
+Create a `.env` file in the root directory based on `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Fill in your Firebase configuration values in the `.env` file.
+
+3. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000](http://localhost:3000)
 
 ## Admin Panel
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { trackClick, trackSearch } from '$lib/analytics';
 
 	let { data }: { data: PageData } = $props();
 
@@ -23,7 +24,10 @@
 		<div class="mb-12 flex flex-wrap gap-2">
 			<button
 				type="button"
-				onclick={() => (selectedCategory = 'all')}
+				onclick={() => {
+					selectedCategory = 'all';
+					trackClick('category_filter', { category: 'all', page: 'projects' });
+				}}
 				class="px-4 py-2 rounded-full text-sm font-medium transition-colors {selectedCategory ===
 				'all'
 					? 'bg-foreground text-background'
@@ -34,7 +38,10 @@
 			{#each data.categories as category}
 				<button
 					type="button"
-					onclick={() => (selectedCategory = category.name)}
+					onclick={() => {
+						selectedCategory = category.name;
+						trackClick('category_filter', { category: category.name, page: 'projects' });
+					}}
 					class="px-4 py-2 rounded-full text-sm font-medium transition-colors {selectedCategory ===
 					category.name
 						? 'bg-foreground text-background'
@@ -50,6 +57,12 @@
 				<a
 					href="/projects/{project.id}"
 					class="group block p-6 rounded-lg border border-border hover:border-foreground transition-colors"
+					onclick={() =>
+						trackClick('project_card', {
+							project_id: project.id,
+							project_title: project.title,
+							location: 'projects_page'
+						})}
 				>
 					<div class="aspect-[4/3] overflow-hidden rounded-lg bg-muted mb-4">
 						<img

@@ -3,6 +3,18 @@
 	import Navigation from '$lib/components/navigation.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import { page } from '$app/stores';
+	import { analytics } from '$lib/firebase';
+	import { logEvent } from 'firebase/analytics';
+	import { browser } from '$app/environment';
+
+	$effect(() => {
+		if (browser && analytics && $page.url.pathname) {
+			logEvent(analytics, 'page_view', {
+				page_path: $page.url.pathname,
+				page_title: document.title
+			});
+		}
+	});
 
 	const siteUrl = 'https://riandyhasan.me';
 	const siteName = 'Riandy Hasan - Portfolio';

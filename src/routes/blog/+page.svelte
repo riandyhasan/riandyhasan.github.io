@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
 	import { filterPostsByCategory } from '$lib/client-utils';
 	import type { BlogPost } from '$lib/data';
+	import { trackClick } from '$lib/analytics';
 
 	let { data }: { data: PageData } = $props();
 
@@ -28,7 +29,10 @@
 		<div class="mb-12 flex flex-wrap gap-2">
 			<button
 				type="button"
-				onclick={() => (selectedCategory = 'all')}
+				onclick={() => {
+					selectedCategory = 'all';
+					trackClick('category_filter', { category: 'all', page: 'blog' });
+				}}
 				class="px-4 py-2 rounded-full text-sm font-medium transition-colors {selectedCategory ===
 				'all'
 					? 'bg-foreground text-background'
@@ -39,7 +43,10 @@
 			{#each data.categories as category}
 				<button
 					type="button"
-					onclick={() => (selectedCategory = category.slug)}
+					onclick={() => {
+						selectedCategory = category.slug;
+						trackClick('category_filter', { category: category.name, page: 'blog' });
+					}}
 					class="px-4 py-2 rounded-full text-sm font-medium transition-colors {selectedCategory ===
 					category.slug
 						? 'bg-foreground text-background'
@@ -55,6 +62,12 @@
 				<a
 					href="/blog/{post.id}"
 					class="block group p-6 rounded-lg border border-border hover:border-foreground transition-colors"
+					onclick={() =>
+						trackClick('blog_card', {
+							post_id: post.id,
+							post_title: post.title,
+							location: 'blog_page'
+						})}
 				>
 					<div class="flex items-center gap-2 text-xs text-muted-foreground mb-3">
 						<span>{post.category}</span>

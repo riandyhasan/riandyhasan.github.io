@@ -3,6 +3,7 @@
 	import Button from '$lib/components/ui/button.svelte';
 	import Github from '$lib/components/icons/github.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
+	import { trackClick, trackOutboundLink } from '$lib/analytics';
 </script>
 
 <div class="container mx-auto px-4 py-16">
@@ -25,7 +26,12 @@
 						<p class="text-muted-foreground mb-4">
 							Send me an email and I'll get back to you within 24 hours.
 						</p>
-						<Button href="mailto:riandyhsn@gmail.com">Send Email</Button>
+						<a
+							href="mailto:riandyhsn@gmail.com"
+							onclick={() => trackClick('email_button', { location: 'contact_page' })}
+						>
+							<Button>Send Email</Button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -40,14 +46,15 @@
 						<p class="text-muted-foreground mb-4">
 							Connect with me on LinkedIn for professional networking.
 						</p>
-						<Button
+						<a
 							href="https://www.linkedin.com/in/riandy-hasan-3836791b5/"
-							variant="outline"
 							target="_blank"
 							rel="noopener noreferrer"
+							onclick={() =>
+								trackOutboundLink('https://www.linkedin.com/in/riandy-hasan-3836791b5/')}
 						>
-							View Profile
-						</Button>
+							<Button variant="outline">View Profile</Button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -62,14 +69,15 @@
 						<p class="text-muted-foreground mb-4">
 							Check out my open source work and coding projects.
 						</p>
-						<Button
+						<a
 							href="https://github.com/riandyhasan"
 							variant="outline"
 							target="_blank"
 							rel="noopener noreferrer"
+							onclick={() => trackOutboundLink('https://github.com/riandyhasan')}
 						>
-							View GitHub
-						</Button>
+							<Button variant="outline">View GitHub</Button>
+						</a>
 					</div>
 				</div>
 			</div>

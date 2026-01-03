@@ -3,6 +3,7 @@
 	import { cn } from '$lib/utils';
 	import { Menu, X } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
+	import { trackClick } from '$lib/analytics';
 
 	let isOpen = $state(false);
 
@@ -28,6 +29,8 @@
 				<a
 					href="/"
 					class="text-xl font-semibold tracking-tight hover:opacity-70 transition-opacity"
+					onclick={() =>
+						trackClick('navigation_link', { page_name: 'Home', page_path: '/', is_logo: true })}
 				>
 					Yandy
 				</a>
@@ -41,6 +44,8 @@
 									'text-sm font-medium transition-colors hover:text-foreground/80',
 									$page.url.pathname === item.href ? 'text-foreground' : 'text-muted-foreground'
 								)}
+								onclick={() =>
+									trackClick('navigation_link', { page_name: item.name, page_path: item.href })}
 							>
 								{item.name}
 							</a>
@@ -69,7 +74,14 @@
 							<li>
 								<a
 									href={item.href}
-									onclick={() => (isOpen = false)}
+									onclick={() => {
+										isOpen = false;
+										trackClick('navigation_link', {
+											page_name: item.name,
+											page_path: item.href,
+											mobile: true
+										});
+									}}
 									class={cn(
 										'block px-4 py-2 rounded-lg text-sm font-medium transition-colors',
 										$page.url.pathname === item.href

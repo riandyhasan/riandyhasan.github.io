@@ -4,6 +4,7 @@
 	import Github from '$lib/components/icons/github.svelte';
 	import Button from '$lib/components/ui/button.svelte';
 	import { page } from '$app/stores';
+	import { trackClick, trackOutboundLink } from '$lib/analytics';
 
 	let { data }: { data: PageData } = $props();
 
@@ -16,6 +17,11 @@
 	function openImageModal(imageUrl: string) {
 		selectedImage = imageUrl;
 		document.body.style.overflow = 'hidden';
+		trackClick('image_view', {
+			project_id: data.project.id,
+			project_title: data.project.title,
+			image_url: imageUrl
+		});
 	}
 
 	function closeImageModal() {
@@ -82,6 +88,8 @@
 		<a
 			href="/projects"
 			class="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8"
+			onclick={() =>
+				trackClick('back_link', { from: 'project_detail', project_id: data.project.id })}
 		>
 			<ArrowLeft class="mr-2 h-4 w-4" />
 			Back to Projects
@@ -109,21 +117,42 @@
 
 			<div class="flex flex-wrap gap-3">
 				{#if data.project.liveUrl}
-					<Button href={data.project.liveUrl} target="_blank" rel="noopener noreferrer">
-						<ExternalLink class="mr-2 h-4 w-4" />
-						View Live
-					</Button>
-				{/if}
-				{#if data.project.githubUrl}
-					<Button
-						href={data.project.githubUrl}
-						variant="outline"
+					<a
+						href={data.project.liveUrl}
 						target="_blank"
 						rel="noopener noreferrer"
+						onclick={() => {
+							trackOutboundLink(data.project.liveUrl || '');
+							trackClick('project_live_link', {
+								project_id: data.project.id,
+								project_title: data.project.title
+							});
+						}}
 					>
-						<Github class="mr-2 h-4 w-4" />
-						View Code
-					</Button>
+						<Button>
+							<ExternalLink class="mr-2 h-4 w-4" />
+							View Live
+						</Button>
+					</a>
+				{/if}
+				{#if data.project.githubUrl}
+					<a
+						href={data.project.githubUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						onclick={() => {
+							trackOutboundLink(data.project.githubUrl || '');
+							trackClick('project_github_link', {
+								project_id: data.project.id,
+								project_title: data.project.title
+							});
+						}}
+					>
+						<Button variant="outline">
+							<Github class="mr-2 h-4 w-4" />
+							View Code
+						</Button>
+					</a>
 				{/if}
 			</div>
 		</div>
