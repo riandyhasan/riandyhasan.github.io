@@ -2,6 +2,8 @@
 	import { Mail } from 'lucide-svelte';
 	import Github from '$lib/components/icons/github.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
+
+	const isDevelopment = import.meta.env.MODE === 'development';
 </script>
 
 <footer class="border-t border-border mt-24">
@@ -44,9 +46,11 @@
 					</a>
 				</div>
 
-				<div class="flex gap-4 text-sm text-muted-foreground">
-					<a href="/admin/login" class="hover:text-foreground transition-colors"> Admin </a>
-				</div>
+				{#if isDevelopment}
+					<div class="flex gap-4 text-sm text-muted-foreground">
+						<a href="/admin/login" class="hover:text-foreground transition-colors"> Admin </a>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
