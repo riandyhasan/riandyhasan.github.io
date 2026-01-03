@@ -1,0 +1,51 @@
+[
+	{
+		"id": "cat-1",
+		"name": "Career",
+		"slug": "career",
+		"type": "blog",
+		"description": "Career development, freelancing, and professional growth"
+	},
+	{
+		"id": "cat-2",
+		"name": "Web",
+		"slug": "web",
+		"type": "project"
+	},
+	{
+		"id": "cat-3",
+		"name": "Mobile",
+		"slug": "mobile",
+		"type": "project"
+	},
+	{
+		"id": "cat-4",
+		"name": "Desktop",
+		"slug": "desktop",
+		"type": "project"
+	},
+	{
+		"id": "cat-5",
+		"name": "SaaS",
+		"slug": "saas",
+		"type": "project"
+	},
+	{
+		"id": "cat-6",
+		"name": "Management System",
+		"slug": "management-system",
+		"type": "project"
+	},
+	{
+		"id": "cat-7",
+		"name": "Company Profile",
+		"slug": "company-profile",
+		"type": "project"
+	},
+	{
+		"id": "cat-8",
+		"name": "Data",
+		"slug": "data",
+		"type": "project"
+	}
+]

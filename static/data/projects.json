@@ -1,0 +1,299 @@
+[
+	{
+		"title": "Milio",
+		"description": "A platform to help people book and take a picture in photo booth.",
+		"fullDescription": "Milio is an end-to-end photobooth solution that connects online booking with an on-site photo-taking experience. Users reserve sessions via the website, complete payments using QRIS or a payment gateway, and activate their session by scanning a QR code at the booth.\nBehind the scenes, a desktop application controls hardware components such as cameras, printers, and projectors, ensuring a reliable and seamless experience, even in large-scale event setups.",
+		"date": "",
+		"technologies": ["Vue", "Electron", "LoopBack 4", "MongoDB", "OBS"],
+		"githubUrl": "https://github.com/Milio-Station",
+		"liveUrl": "",
+		"image": "/assets/milio.png",
+		"images": [],
+		"outcomes": [
+			"Integrated payment gateway with QRIS support",
+			"Seamless integration with camera, printer, projector, and OBS"
+		],
+		"categories": ["Web", "Desktop"],
+		"id": "milio"
+	},
+	{
+		"title": "Antrein",
+		"description": "A highly scalable virtual waiting-room platform that helps event organizers sell high-demand tickets without their websites going down.",
+		"fullDescription": "Antrein is a fault-tolerant virtual waiting-room platform designed to handle extreme traffic surges during high-demand events. It is built using Go-based microservices communicating via gRPC and Server-Sent Events (SSE), deployed on Kubernetes with a custom Go reverse proxy.\nThe system supports dynamic, event-based infrastructure provisioning, automatically scaling compute resources up and down based on event start and end times to ensure both performance and cost efficiency.",
+		"date": "",
+		"technologies": ["Golang", "PostgreSQL", "Kubernetes", "SSE", "Reverse Proxy"],
+		"githubUrl": "https://github.com/orgs/antrein/repositories",
+		"liveUrl": "",
+		"image": "/assets/placeholder-project.jpeg",
+		"images": [],
+		"outcomes": [
+			"Delivered real-time queue updates to users using SSE",
+			"Successfully handled millions of concurrent requests",
+			"Enabled configurable horizontal scaling via Kubernetes",
+			"Implemented multi-tenant architecture with isolated clusters per project"
+		],
+		"categories": ["SaaS"],
+		"id": "antrein"
+	},
+	{
+		"title": "Jajaka",
+		"description": "A mobile app that helps early-stage SME founders make better business decisions through location mapping and ML-powered recommendations.",
+		"fullDescription": "Jajaka is a mobile application designed to help people start their small and medium enterprises (SMEs). Built with React Native for the mobile app and FastAPI for the backend, the platform provides location mapping and business recommendations based on data analysis and machine learning.\nBy leveraging geographic and behavioral data, Jajaka helps users identify suitable locations and make informed decisions when starting their businesses.",
+		"date": "",
+		"technologies": ["React Native", "Typescript", "Python", "FastAPI", "Machine Learning"],
+		"githubUrl": "",
+		"liveUrl": "",
+		"image": "/assets/jajaka-1.png",
+		"images": [
+			"/assets/jajaka-2.png",
+			"/assets/jajaka-3.png",
+			"/assets/jajaka-4.png",
+			"/assets/jajaka-5.png"
+		],
+		"outcomes": [
+			"Delivered ML-powered recommendations for SME location selection",
+			"Implemented interactive location mapping within the mobile app",
+			"Enabled data-driven decision-making for early-stage entrepreneurs"
+		],
+		"categories": ["Mobile"],
+		"id": "jajaka"
+	},
+	{
+		"title": "Gwarp",
+		"description": "A lightning-fast data migration tool that helps engineers and data teams move and sync data across systems reliably and efficiently.",
+		"fullDescription": "GWarp is a high-performance data migration tool built in Go that enables flexible and reliable movement of data between systems. It supports complex pipelines with multiple sinks and automatic schema detection, and is designed for fault tolerance with resume capabilities. Users can configure migrations using YAML and run pipelines in either interactive or daemon (background) mode. ",
+		"date": "",
+		"technologies": ["Golang", "CLI", "Yaml", "PostgreSQL", "BigQuery", "Kafka"],
+		"githubUrl": "https://github.com/riandyhasan/gwarp",
+		"liveUrl": "",
+		"image": "/assets/placeholder-project.jpeg",
+		"images": [],
+		"outcomes": [
+			"Enabled high-throughput data migrations with automatic schema detection",
+			"Supported multi-sink pipelines across databases, files, and streaming sources",
+			"Built with fault-tolerant execution and resume on failure",
+			"Provided CLI tools for monitoring, logging, and background execution"
+		],
+		"categories": ["Data"],
+		"id": "gwarp"
+	},
+	{
+		"title": "Realtime Data Pipeline",
+		"description": "A real-time data pipeline that helps analytics and AI teams consume up-to-date PostgreSQL data in BigQuery at massive scale.",
+		"fullDescription": "This project involved designing and building a real-time data pipeline to synchronize golden data from PostgreSQL to BigQuery. The system combines an initial large-scale data migration using batch jobs with a streaming pipeline based on Change Data Capture (CDC) to ensure near-real-time consistency.\nThe pipeline was designed to handle billions of records (~9TB of data) and supports downstream analytics and chatbot use cases requiring low-latency, up-to-date data.",
+		"date": "",
+		"technologies": ["Golang", "PostgreSQL", "CDC", "Kafka", "BigQuery", "Bash Script"],
+		"githubUrl": "",
+		"liveUrl": "",
+		"image": "/assets/placeholder-project.jpeg",
+		"images": [],
+		"outcomes": [
+			"Successfully migrated billions of records (~9TB) from PostgreSQL to BigQuery",
+			"Built a CDC-based streaming pipeline for near-real-time data synchronization",
+			"Enabled real-time analytics and chatbot workloads with up-to-date data",
+			"Designed a scalable and fault-tolerant data ingestion architecture"
+		],
+		"categories": ["Data"],
+		"id": "realtime-data-pipeline"
+	},
+	{
+		"title": "Raung Residence",
+		"description": "A coliving management and booking platform that helps property owners streamline operations and allows residents to manage their stay digitally.",
+		"fullDescription": "Raung Residence is a web platform designed to support both coliving residents and operators. Users can browse available rooms, book their stay, access shared facilities such as laundry and cleaning services, and pay monthly rent through an integrated payment gateway.\nOn the operational side, the platform helps coliving staff manage rooms, tenants, and services efficiently from a single system.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "Golang", "PostgreSQL", "RabbitMQ", "Payment Gateway"],
+		"githubUrl": "https://github.com/orgs/PDR-Tech/repositories",
+		"liveUrl": "",
+		"image": "/assets/raung-1.png",
+		"images": [
+			"/assets/raung-2.png",
+			"/assets/raung-3.png",
+			"/assets/raung-5.png",
+			"/assets/raung-4.png"
+		],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "raung-residence"
+	},
+	{
+		"title": "Kost Management System",
+		"description": "A web-based management system that helps coliving operators track residents, manage room maintenance, and monitor payments in one centralized platform.",
+		"fullDescription": "Kost Management System is a web application designed to help coliving and kost operators manage their daily operations. The platform enables operators to track residents, monitor room occupancy, manage maintenance requests, and record resident payments in a centralized system.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "PostgreSQL"],
+		"githubUrl": "",
+		"liveUrl": "",
+		"image": "/assets/management-kos-1.png",
+		"images": [
+			"/assets/management-kos-2.png",
+			"/assets/management-kos-3.png",
+			"/assets/management-kos-4.png",
+			"/assets/management-kos-5.png"
+		],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "kost-management-system"
+	},
+	{
+		"title": "Learning Management System - Radiology UI",
+		"description": "A learning management system that helps radiology PPDS residents manage academic activities and helps doctors to evaluate progress and determine semester outcomes.",
+		"fullDescription": "The Learning Management System for Radiology UI is a specialized academic platform designed to manage the learning activities of PPDS (Program Pendidikan Dokter Spesialis) residents. Residents can submit journals, presentations, and academic tasks through the system.\nFrom the doctors’ perspective, the platform helps manage PPDS residents, review submissions, monitor performance, and determine whether residents pass or proceed to the next semester.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "Express", "MongoDB"],
+		"githubUrl": "",
+		"liveUrl": "",
+		"image": "/assets/lms-ui-1.png",
+		"images": ["/assets/lms-ui-2.png", "/assets/lms-ui-3.png"],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "learning-management-system---radiology-ui"
+	},
+	{
+		"title": "TBGuard",
+		"description": "A community-focused landing page that helps raise awareness and improve tuberculosis detection and management in Sampang.",
+		"fullDescription": "TB GuardRise is a public health landing page built to support a community initiative focused on improving tuberculosis (TB) detection and management in Sampang. The platform includes a content management system (CMS) that allows health teams to easily update educational content, campaign information, and program updates without technical assistance.\n",
+		"date": "",
+		"technologies": ["Next", "Typescript"],
+		"githubUrl": "",
+		"liveUrl": "https://tbguardrise.com",
+		"image": "/assets/tbguard-1.png",
+		"images": ["/assets/tbguard-2.png", "/assets/tbguard-3.png", "/assets/tbguard-4.png"],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "tbguard"
+	},
+	{
+		"title": "Mercator",
+		"description": "A carbon calculator landing page that helps governments estimate blue carbon offsets from mangrove ecosystems to support CO₂ reduction targets.",
+		"fullDescription": "MERCATOR is a landing page designed to raise awareness of the role of mangrove ecosystems as one of the largest sources of blue carbon. The platform helps government stakeholders estimate carbon stock and sequestration potential based on CO₂ reduction targets and mangrove density.\n",
+		"date": "",
+		"technologies": ["Next", "HTML", "CSS", "Javascript", "Leaflet"],
+		"githubUrl": "https://github.com/riandyhasan/mercator-data",
+		"liveUrl": "https://mercator-id.vercel.app",
+		"image": "/assets/mercator-1.png",
+		"images": [
+			"/assets/mercator-2.png",
+			"/assets/mercator-3.png",
+			"/assets/mercator-4.png",
+			"/assets/mercator-5.png"
+		],
+		"outcomes": [],
+		"categories": ["Web"],
+		"id": "mercator"
+	},
+	{
+		"title": "Inclusify",
+		"description": "A landing page and learning platform that helps children with special abilities learn through games while raising public awareness about inclusive education.",
+		"fullDescription": "Inclusify is a digital platform designed to raise awareness about children with special abilities while providing a game-based learning experience tailored to their needs. The landing page focuses on education and advocacy, while the learning section offers interactive games to support cognitive and skill development in an engaging way.",
+		"date": "",
+		"technologies": ["Next", "Typescript"],
+		"githubUrl": "",
+		"liveUrl": "https://inclusify-one.vercel.app",
+		"image": "/assets/inclusify-1.png",
+		"images": ["/assets/inclusify-2.png", "/assets/inclusify-3.png"],
+		"outcomes": [],
+		"categories": ["Web"],
+		"id": "inclusify"
+	},
+	{
+		"title": "TEDxITB 5.0",
+		"description": "An event website that helps audiences register, access event information, and purchase merchandise",
+		"fullDescription": "TEDxITB 5.0 is an event management and engagement platform designed to support audience participation and internal operations. The website communicates the event’s theme and details, enables registration and merchandise sales, and centralizes payment verification and attendee management through an admin dashboard.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "Firebase"],
+		"githubUrl": "",
+		"liveUrl": "https://tedxitb-5.vercel.app",
+		"image": "/assets/tedx-1.png",
+		"images": [
+			"/assets/tedx-2.png",
+			"/assets/tedx-3.png",
+			"/assets/tedx-4.png",
+			"/assets/tedx-5.png"
+		],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "tedxitb-50"
+	},
+	{
+		"title": "SWIC",
+		"description": "A web platform for the Smarter World Innovation Challenge that supports case competition enrollment, submission, and end-to-end participant management.",
+		"fullDescription": "SWIC is a web-based competition platform designed to support a global innovation challenge. It provides event information, participant enrollment, and case submission workflows, while offering organizers an administrative interface to manage participants, verify eligibility, and evaluate submissions.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "Firebase"],
+		"githubUrl": "",
+		"liveUrl": "https://swic.vercel.app",
+		"image": "/assets/swic-1.png",
+		"images": [
+			"/assets/swic-2.png",
+			"/assets/swic-3.png",
+			"/assets/swic-4.png",
+			"/assets/swic-5.png",
+			"/assets/swic-6.png",
+			"/assets/swic-7.png"
+		],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "swic"
+	},
+	{
+		"title": "Skill Up",
+		"description": "A web and desktop platform that supports nationwide skill-development programs",
+		"fullDescription": "The Skill Up Foundation platform was built to support a nationwide non-profit organization focused on expanding access to education and skill development in Indonesia. The platform includes a public landing page to communicate the foundation’s mission and programs, as well as enrollment flows for webinars, apprenticeships, and academy programs.\nTo support operations at scale, the system provides tools to organize participants and a desktop-based admin application that enables content management and automatic certificate generation for program graduates.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "Electron", "Firebase"],
+		"githubUrl": "",
+		"liveUrl": "https://www.skill-up.id",
+		"image": "/assets/skill-up-1.png",
+		"images": [
+			"/assets/skill-up-2.png",
+			"/assets/skill-up-3.png",
+			"/assets/skill-up-4.png",
+			"/assets/skill-up-5.png"
+		],
+		"outcomes": [],
+		"categories": ["Web", "Management System"],
+		"id": "skill-up"
+	},
+	{
+		"title": "PT. Sanggar Jaya Abadi Company Profile",
+		"description": "A corporate website that helps PT. Sanggar Jaya Abadi present its products, milestones, and portfolio to build trust with partners and customers.",
+		"fullDescription": "This company profile website serves as PT. Sanggar Jaya Abadi’s digital presence, highlighting its mission, experience, and partnerships. The site showcases product offerings, company milestones, portfolio projects, and certifications.",
+		"date": "",
+		"technologies": ["Next", "Typescript"],
+		"githubUrl": "",
+		"liveUrl": "https://sanggarjaya-project.vercel.app",
+		"image": "/assets/sja-1.png",
+		"images": ["/assets/sja-2.png", "/assets/sja-3.png"],
+		"outcomes": [],
+		"categories": ["Web", "Company Profile"],
+		"id": "pt-sanggar-jaya-abadi-company-profile"
+	},
+	{
+		"title": "IOE 2023",
+		"description": "An event website that helps students access event information and enroll in competitions through a centralized platform.",
+		"fullDescription": "The IOE 2023 website was built as an event and competition platform to provide clear information and simplify participant enrollment. The site presents event details, competition information, and registration flows, allowing students to easily discover and join the available competitions.",
+		"date": "",
+		"technologies": [],
+		"githubUrl": "",
+		"liveUrl": "",
+		"image": "/assets/ioe-23-1.png",
+		"images": [],
+		"outcomes": [],
+		"categories": ["Web", "Company Profile"],
+		"id": "ioe-2023"
+	},
+	{
+		"title": "DQLC Website",
+		"description": "A digital assessment platform that helps dentists evaluate patients’ quality of life before treatment to support better clinical decisions.",
+		"fullDescription": "DLQC (Digital Life Quality Check) is a digital application designed to assist dentists in assessing patients’ quality of life before dental treatment. The platform evaluates caries-related risk factors such as oral health knowledge, tooth-brushing behavior, and dietary habits, as well as quality-of-life aspects including oral discomfort, emotional concerns, functional limitations, and social impact.\nBy providing structured pre-treatment assessments, DLQC helps dentists make more informed treatment decisions.",
+		"date": "",
+		"technologies": ["Next", "Typescript", "Firebase"],
+		"githubUrl": "",
+		"liveUrl": "",
+		"image": "/assets/dlqc.png",
+		"images": [],
+		"outcomes": [],
+		"categories": ["Web"],
+		"id": "dqlc-website"
+	}
+]

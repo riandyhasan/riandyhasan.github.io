@@ -1,0 +1,82 @@
+{
+	"name": "Riandy Hasan (Yandy)",
+	"tagline": "Software Engineer",
+	"bio": "<b>Building something new and want to do it right from day one?</b> I help turn ideas into real systems, whether that's a simple website or a large, multi-platform product. Plus, I handle cloud setup, help it scale, and make sure data moves in real time.<br/><br/><b>Or wrestling with a system that needs migrating?</b> I help teams with vendor-to-self-developed-system migrations, data and cloud migrations, tech stack changes, and observability upgrades.<br/><br/>If you're dealing with those kinds of challenges, let's chat :D",
+	"photo": "/myself.jpg",
+	"email": "riandyhsn@gmail.com",
+	"linkedin": "https://www.linkedin.com/in/riandy-hasan-3836791b5/",
+	"github": "https://github.com/riandyhasan",
+	"twitter": "https://twitter.com/riandyhasan",
+	"skills": [
+		"Go",
+		"Java",
+		"Python",
+		"TypeScript/JavaScript",
+		"Kotlin",
+		"Swift",
+		"GCP",
+		"Alibaba Cloud",
+		"AWS",
+		"Kubernetes",
+		"MongoDB",
+		"PostgreSQL",
+		"Redis",
+		"BigQuery",
+		"MaxCompute",
+		"Apache Kafka",
+		"Apache Flink",
+		"Apache Airflow",
+		"Apache Spark",
+		"Terraform",
+		"CI/CD",
+		"Elasticsearch",
+		"Kibana",
+		"Logstash",
+		"Fluentd",
+		"Grafana",
+		"Prometheus",
+		"OpenTelemetry"
+	],
+	"workHistory": [
+		{
+			"role": "Software Engineer",
+			"company": "GoTo Group",
+			"period": "Aug 2024 - Present",
+			"workType": "Full-time",
+			"location": "Jakarta, Indonesia",
+			"description": "Worked on the engagement and experimentation platform. I helped marketers reach the right users with personalized campaigns, and helped PMs and engineers make better decisions through A/B testing and experiment data."
+		},
+		{
+			"role": "Full Stack Engineer",
+			"company": "FDC Dental Clinic",
+			"period": "Aug 2023 - Jul 2024",
+			"workType": "Contract-based",
+			"location": "Jakarta, Indonesia",
+			"description": "Worked on a clinic management system from scratch. I helped clinics run their operations more efficiently by supporting appointments, doctor and clinic management, inventory, and analytics. I also helped reduce the company's cloud costs by migrating the system and data from a third-party vendor to an in-house solution."
+		},
+		{
+			"role": "Full Stack Engineer",
+			"company": "Formi.id",
+			"period": "Jun 2023 - Aug 2023",
+			"workType": "Internship",
+			"location": "Yogyakarta, Indonesia",
+			"description": "Worked on Formi's platform with a focus on security and usability. I helped the company avoid potential issues by conducting a security assessment and identifying authentication vulnerabilities. I also helped users easily book dentist appointments through a web-based reservation system."
+		},
+		{
+			"role": "Software Engineer",
+			"company": "Pintarnya",
+			"period": "May 2022 - Sep 2022",
+			"workType": "Internship",
+			"location": "Jakarta, Indonesia",
+			"description": "Worked on the Pintarnya main website (pintarnya.com). I helped improve the user experience by developing new features, fixing bugs, and revamping the UI. I also helped the company reduce cloud costs by migrating location-based search from Google services to a self-developed solution."
+		},
+		{
+			"role": "Full Stack Developer",
+			"company": "UR",
+			"period": "Jan 2022 - Mar 2022",
+			"workType": "Internship",
+			"location": "Bandung, Indonesia",
+			"description": "Worked on the admin platform for a Point of Sale (POS) system. I helped restaurants and cafes run their businesses more efficiently by streamlining transactions and daily operations."
+		}
+	]
+}
